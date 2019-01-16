@@ -1,0 +1,3 @@
+module Onigmo {
+    header "onigmo.h"
+}
