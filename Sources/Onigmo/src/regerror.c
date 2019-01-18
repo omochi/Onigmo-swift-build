@@ -246,16 +246,24 @@ static int to_ascii(OnigEncoding enc, UChar *s, UChar *end,
 #define MAX_ERROR_PAR_LEN   30
 
 extern int
-onig_error_code_to_str(UChar* s, OnigPosition code, ...)
+onig_error_code_to_str(UChar *s, OnigPosition code, ...)
+{
+    va_list vargs;
+    va_start(vargs, code);
+    int r = onig_error_code_to_str_v(s, code, vargs);
+    va_end(vargs);
+    return r;
+}
+
+extern int
+onig_error_code_to_str_v(UChar* s, OnigPosition code, va_list vargs)
 {
   UChar *p, *q;
   OnigErrorInfo* einfo;
   size_t len;
   int is_over;
   UChar parbuf[MAX_ERROR_PAR_LEN];
-  va_list vargs;
 
-  va_start(vargs, code);
 
   switch (code) {
   case ONIGERR_UNDEFINED_NAME_REFERENCE:
@@ -306,7 +314,6 @@ onig_error_code_to_str(UChar* s, OnigPosition code, ...)
     break;
   }
 
-  va_end(vargs);
   return (int )len;
 }
 

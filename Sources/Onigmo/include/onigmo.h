@@ -69,6 +69,7 @@ extern "C" {
 RUBY_SYMBOL_EXPORT_BEGIN
 
 #include <stddef.h>		/* for size_t */
+#include <stdarg.h>     /* for va_list */
 
 /* PART: character encoding */
 
@@ -816,6 +817,8 @@ ONIG_EXTERN
 int onig_init(void);
 ONIG_EXTERN
 int onig_error_code_to_str(OnigUChar* s, OnigPosition err_code, ...);
+ONIG_EXTERN
+int onig_error_code_to_str_v(OnigUChar* s, OnigPosition err_code, va_list vargs);
 ONIG_EXTERN
 void onig_set_warn_func(OnigWarnFunc f);
 ONIG_EXTERN
