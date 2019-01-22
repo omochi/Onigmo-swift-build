@@ -80,7 +80,8 @@ typedef enum {
   FAILURE = -2,
   ACCEPT,
   S0, S1, S2, S3,
-  S4, S5, S6, S7
+  S4, S5, S6, S7,
+  S8, S9,S10,S11,
 } state_t;
 #define A ACCEPT
 #define F FAILURE
